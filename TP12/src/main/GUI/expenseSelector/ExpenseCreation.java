@@ -8,6 +8,8 @@ import main.control.ExpenseManager;
 import main.model.Friend;
 
 public class ExpenseCreation extends JFrame{
+
+	//prueba
 	
 	private JList<Friend> friends;
 	private DefaultListModel<Friend> friendsModel;
