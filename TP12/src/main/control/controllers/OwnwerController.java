@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.ComboBoxModel;
 
 import main.GUI.mainWindow.firstTimeWindow.FirstTImeWindow;
 import main.model.AbstractExpense;
@@ -31,7 +32,7 @@ public class OwnwerController {
 		fController= new FriendController();
 		fController.setOwnwerController(this);
 		
-		eController = new ExpenseController(this);
+		eController = new ExpenseController(this,fController);
 		
 //		wasRunBefore();
 	}
@@ -124,6 +125,7 @@ public class OwnwerController {
 			e.printStackTrace();
 		}
 	}
+	
 	public void createOwnerFile(String name, String lastName,String mail, long id, long celNumber, double disponible,String friendPath,String expensePath){
 		File file = new File("./Files/owner.txt");
 		
@@ -153,10 +155,11 @@ public class OwnwerController {
 		ArrayList<AbstractExpense> expenses = new ArrayList<AbstractExpense>(owner.getExpense());
 		for (AbstractExpense abstractExpense : expenses) {
 			if(abstractExpense instanceof Expense){
-				devolver.add((Expense)abstractExpense);
+				if (((Expense)abstractExpense).getDateOfExpense().get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH) && ((Expense)abstractExpense).getDateOfExpense().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+					devolver.add((Expense)abstractExpense);
+				}
 			}
 		}
-		System.out.println(devolver);
 		return devolver;
 	}
 	public List<Income> IncomeThisMonth(){
@@ -164,10 +167,11 @@ public class OwnwerController {
 		ArrayList<AbstractExpense> expenses = new ArrayList<AbstractExpense>(owner.getExpense());
 		for (AbstractExpense abstractExpense : expenses) {
 			if(abstractExpense instanceof Income){
-				devolver.add((Income)abstractExpense);
+				if (((Income)abstractExpense).getDateOfExpense().get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH) && ((Income)abstractExpense).getDateOfExpense().get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+					devolver.add((Income)abstractExpense);
+				}
 			}
 		}
-		System.out.println(devolver);
 		return   devolver;
 	}
 	
@@ -194,5 +198,25 @@ public class OwnwerController {
 		// TODO Auto-generated method stub
 		fController.writeFriends();
 		eController.writeExpense();
+		
 	}
+	public List<String[]> leerCalendar() {
+		// TODO Auto-generated method stub
+		return eController.leerCalendar();
+		
+	}
+	public double getDisponibleToDisplay() {
+		// TODO Auto-generated method stub	
+		return owner.getDisponible();
+	}
+	public double getGastadoToDisplay() {
+		// TODO Auto-generated method stub
+		return owner.getGastado();
+	}
+	public void readAll() {
+		// TODO Auto-generated method stub
+		fController.readFriends(new File("./Files/Friends.txt"));
+		eController.readExpenses();
+	}
+
 }

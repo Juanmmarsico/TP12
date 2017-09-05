@@ -22,6 +22,7 @@ import main.control.action.AddFriendAction;
 import main.control.action.IngressIncomeOrExpenseAction;
 import main.control.action.ModifyAction;
 import main.control.action.SearchAction;
+import main.model.AbstractExpense;
 import main.model.Friend;
 
 public class MainFrame {
@@ -36,6 +37,7 @@ public class MainFrame {
 	    private JTable jlistFriend;
 	    private FriendTableModel friendModel;
 	    private ExpenseSelector expenseSelector;
+	    private JTextArea ownerAmountDisp,gastado;
 	    
 	    private ExpenseManager expenseManager;
 	    
@@ -57,22 +59,54 @@ public class MainFrame {
 	        expenseManager = new ExpenseManager(this);
 
 	        buildMainFrame();
+	        
+	        expenseSelector.updateExpenseOrIncomeList();
+			updateFriendList();
+			changeColor();
+	        repaint();
+	        
 	        mainFrame.setLocationRelativeTo(null);
 	        mainFrame.setVisible(true);
 	        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
 	        mainFrame.pack();
 	    }
 	    
 	    private JPanel buildMainPanel() {
 	        mainPanel = new JPanel();
 	        mainPanel.setLayout(new BorderLayout());
-	        mainPanel.add(new JTextArea("dueno"), BorderLayout.CENTER);
 	        
+//	        mainPanel.add(new JTextArea("dueno"), BorderLayout.NORTH);
+	        ownerAmountDisp =  new JTextArea();
 
+	       
+	        ownerAmountDisp.setEditable(false);
+	        ownerAmountDisp.setMinimumSize(new Dimension(100, 200));
+	        
+	        mainPanel.add(ownerAmountDisp,BorderLayout.EAST);
+	       
+	        gastado =  new JTextArea();
+
+	
+	        gastado.setEditable(false);
+	        gastado.setMinimumSize(new Dimension(100, 200));
+
+	        
+	        mainPanel.add(gastado,BorderLayout.WEST);
 	        return mainPanel;
 	    }
-	    
+	    public void changeColor(){
+	    	 double dispo = expenseManager.getOwnwerController().getDisponibleToDisplay();
+		        String dispoS =""+dispo;
+		        ownerAmountDisp.setBackground(dispo>=0?Color.GREEN:Color.RED);
+		        ownerAmountDisp.setText(dispoS);
+		        
+		        double gast = expenseManager.getOwnwerController().getGastadoToDisplay();
+		        String gastS =""+gast;
+		        gastado.setBackground(gast>=100?Color.GREEN:Color.RED);
+		        gastado.setText(gastS);
+
+	    }
 	    private JFrame buildMainFrame() {
 	        mainFrame = new JFrame("GASTE?");
 
@@ -88,11 +122,10 @@ public class MainFrame {
 	        mainFrame.add(buildFriendPanel(), BorderLayout.EAST);
 	        mainFrame.add(buildButtonPanel(), BorderLayout.SOUTH);
 
-//	        configMainFrameLayout((BorderLayout) mainFrameLayout);
 	        
 	        mainFrame.addWindowListener(new WindowAdapter() {
 	        	 @Override
-	        	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+	        	    public void windowClosing(WindowEvent windowEvent) {
 	        	        if (JOptionPane.showConfirmDialog(mainFrame, 
 	        	            "Are you sure to close this window?", "Really Closing?", 
 	        	            JOptionPane.YES_NO_OPTION,
@@ -249,5 +282,14 @@ public class MainFrame {
 		public void repaint() {
 			// TODO Auto-generated method stub
 			mainFrame.repaint();
+		}
+		public JList<AbstractExpense> seleccionado(){
+			return expenseSelector.getSeleccionado();
+		}
+		public JMenuItem getAddExpense() {
+			return addExpense;
+		}
+		public void setAddExpense(JMenuItem addExpense) {
+			this.addExpense = addExpense;
 		}
 }

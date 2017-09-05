@@ -15,21 +15,30 @@ public abstract class AbstractExpense {
 	protected String place;
 	protected static Set<String> categoria =new TreeSet<String>();
 	protected static Set<String> subcategoria =new TreeSet<String>();
+	private static boolean changeItsStatus = false;
 
 	protected double totalValue;
 	protected Calendar dateOfExpense;
 	
 	public AbstractExpense() {
 		// TODO Auto-generated constructor stub
+		changeItsStatus = true;
+
 	}
 	
 	public AbstractExpense(String place, double totalValue, Calendar dateOfExpense) {
 		this.place = place;
 		this.totalValue = totalValue;
 		this.dateOfExpense = dateOfExpense;
+		changeItsStatus = true;
 
 	}
-
+	public static void resetChangeItsStatus() {
+		changeItsStatus = false;
+	}
+	public static boolean isChangeItsStatus() {
+		return changeItsStatus;
+	}
 	public String getPlace() {
 		return place;
 	}

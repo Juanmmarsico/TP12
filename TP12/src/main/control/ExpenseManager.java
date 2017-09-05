@@ -11,6 +11,7 @@ OwnwerController ownwerController;
 public ExpenseManager(MainFrame mainFrame){
     this.mainFrame = mainFrame;
     ownwerController = new OwnwerController();
+    ownwerController.readAll();
 }
 
 public OwnwerController getOwnwerController() {

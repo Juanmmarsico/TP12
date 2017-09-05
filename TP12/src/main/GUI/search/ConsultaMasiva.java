@@ -1,28 +1,17 @@
 package main.GUI.search;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.JTableHeader;
-
 import main.GUI.tableModel.ExpenseOrIncomeTableModel;
 import main.GUI.tableModel.FriendTableModel;
 import main.control.ExpenseManager;
 import main.control.controllers.ExcepcionPropia;
 import main.model.AbstractExpense;
 import main.model.Friend;
-import test.test;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ConsultaMasiva extends JFrame {
 	

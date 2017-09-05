@@ -16,7 +16,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.Border;
 import main.control.ExpenseManager;
 import main.control.controllers.ExcepcionPropia;
 import main.model.AbstractExpense;
@@ -54,12 +55,28 @@ public class ExpenseSelector extends JFrame{
 		this.add(buildConsulta(), BorderLayout.NORTH);
     	this.add(buildIncomePanel(), BorderLayout.EAST);
     	this.add(buildExpensePanel(), BorderLayout.WEST);
+    	JButton update = new JButton("actualizar");
+    	update.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				updateExpenseOrIncomeList();
+				expenseManager.getMainFrame().updateFriendList();
+				expenseManager.getMainFrame().changeColor();
+			}
+		});
+    	this.add(update, BorderLayout.SOUTH);
     	
-    	int [] algo= {1};
-    	expenseManager.getOwnwerController().getOwner().addIncome(1, algo, "asd", 23, Calendar.getInstance());;
-    	expenseManager.getOwnwerController().getOwner().addExpense("asd", 23, Calendar.getInstance(),2);
+//    	expenseManager.getOwnwerController().getOwner().addExpense("asd", 23, Calendar.getInstance(),2);
+//    	
     	
+//    	updateExpenseOrIncomeList();
+//		expenseManager.getMainFrame().updateFriendList();
+//		expenseManager.getMainFrame().changeColor();
+		
     	updateExpenseOrIncomeList();
+    	repaint();
+    	
     	this.setVisible(true);
 	}
 
@@ -78,15 +95,12 @@ public class ExpenseSelector extends JFrame{
 		consultaPanel.add(precio);
 		
 		consultar = new JButton("Consultar");
-		consultar.addActionListener(new ActionListener() {
-			
+		consultar.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub			
 				expenseModel = new DefaultListModel<Expense>();
-				incomeModel = new DefaultListModel<Income>();
-							
+				incomeModel = new DefaultListModel<Income>();							
 				try {
 					List<AbstractExpense> ex = expenseManager.getOwnwerController().searchAllExpense(lugar.getText(),precio.getText());
 					if (ex.isEmpty()) {
@@ -99,6 +113,7 @@ public class ExpenseSelector extends JFrame{
 						if (abstractExpense instanceof Income) {
 							incomeModel.addElement((Income) abstractExpense);
 						}
+						System.out.println(abstractExpense);
 					}
 					jListExpense = new JList<>(expenseModel);
 					jListExpense.repaint();
@@ -107,8 +122,7 @@ public class ExpenseSelector extends JFrame{
 					jlistIncome.repaint();
 					
 					System.out.println(	expenseManager.getOwnwerController().searchAllExpense(lugar.getText(),precio.getText()));
-					
-					
+										
 				} catch (ExcepcionPropia excepcionPropia) {
 					// TODO: handle exception
 					excepcionPropia.sinResultado();
@@ -128,7 +142,10 @@ public class ExpenseSelector extends JFrame{
 		// TODO Auto-generated method stub
 		expensesListPanel = new JPanel();
 		JLabel expenseListLabel = new JLabel("Gastado");
-		expensesListPanel.add(new JTextArea("gastos"));
+		JTextArea g =new JTextArea("gastos este Mes");
+		g.setEditable(false);
+		expensesListPanel.add(g);
+		
 		expensesListPanel.setBackground(Color.RED);
 		
 		expenseModel = new DefaultListModel<Expense>();
@@ -151,7 +168,9 @@ public class ExpenseSelector extends JFrame{
 		// TODO Auto-generated method stub
 		incomePanelList = new JPanel();
 		JLabel incomeListLabel = new JLabel("ingresos");
-		incomePanelList.add(new JTextArea("ingreso"));
+		JTextArea in = new JTextArea("ingreso este mes");
+		in.setEditable(false);
+		incomePanelList.add(in);
 		incomePanelList.setBackground(Color.GREEN);
 		
 		
@@ -169,8 +188,6 @@ public class ExpenseSelector extends JFrame{
 				jListExpense.clearSelection();
 			}
 		});
-      jlistIncome.setSize(100, 100);
-      jlistIncome.setVisible(true);
 		
 		return incomePanelList;
 	}
@@ -194,15 +211,26 @@ public class ExpenseSelector extends JFrame{
 	        jlistIncome.setModel(incomeModel);
 	        jListExpense.repaint();
 	        jlistIncome.repaint();
+	        expensesListPanel.repaint();
+	        repaint();
+	        incomePanelList.repaint();
 	        }
 
 	public void consulta() {
 		// TODO Auto-generated method stub
 		if (consultaPanel.isVisible()) {
 			consultaPanel.setVisible(false);
-			updateExpenseOrIncomeList();	
+		//	updateExpenseOrIncomeList();	
 		}else{ consultaPanel.setVisible(true);
 		}
+	}
+
+	public JList<AbstractExpense> getSeleccionado() {
+		// TODO Auto-generated method stub
+		if (jListExpense.isSelectionEmpty()) {
+			return jlistIncome;
+		}else
+		return jListExpense;
 	}
 
 }

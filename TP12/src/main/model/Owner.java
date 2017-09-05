@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.swing.JList;
+
 
 public class Owner {
 
@@ -132,12 +134,13 @@ public class Owner {
 	}
 		
 	public void addIncome(int repetition,int [] repetitionsDays,String place, double totalValue, Calendar dateOfExpense){
+		disponible+=totalValue;
 		switch (repetition) {
 		case 0:
 			expenses.add(new Income(repetition,repetitionsDays,place, totalValue, dateOfExpense));
 			break;
 		case 1:
-			
+			expenses.add(new Income(repetition,repetitionsDays,place, totalValue, dateOfExpense));
 			break;
 		case 2:
 			for (int i = 0; i < repetition; i++) {
@@ -183,12 +186,16 @@ public class Owner {
 
 	public  void addExpense(String place, double totalValue, Calendar dateOfExpense, double splitValue) {
 		// TODO Auto-generated method stub
+		gastado+=totalValue;
+		disponible-= totalValue;
 		expenses.add(new Expense(place, totalValue, dateOfExpense, splitValue));
 		
 	}
 	public  void addExpense(String place, double totalValue, Calendar dateOfExpense, ArrayList<Friend> friendsInTheExpense,
 			double splitValue) {
 		// TODO Auto-generated method stub
+		gastado+=splitValue;
+		disponible-=splitValue;
 		expenses.add(new Expense(place, totalValue, dateOfExpense, friendsInTheExpense, splitValue));
 
 	}
@@ -198,6 +205,8 @@ public class Owner {
 		for (int i = 0; i < cuotas; i++) {
 			dateOfExpense.add(Calendar.MONTH, i);
 			expenses.add(new Expense(place, totalValue, dateOfExpense, friendsInTheExpense, splitValue, tieneCuotas, cuotas));
+			gastado+=splitValue/cuotas;
+			disponible-=splitValue/cuotas;
 		}
 
 	}
@@ -260,6 +269,7 @@ public class Owner {
 	public List<AbstractExpense> searchAllExpense(String text, String text2) {
 		// TODO Auto-generated method stub
 		List<AbstractExpense> expensesOrIncome = new ArrayList<AbstractExpense>();
+		
 		for (AbstractExpense abstractExpense : expenses) {
 			if (abstractExpense instanceof Income) {
 				if (((Income)abstractExpense).Search(text, text2)) {
@@ -273,5 +283,11 @@ public class Owner {
 			}
 		}
 		return expensesOrIncome;	}
+	public void addExpense(String text, double parseDouble,
+			Object selectedItem, JList<Friend> friendsCopy, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }

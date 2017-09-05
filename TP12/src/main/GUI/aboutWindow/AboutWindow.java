@@ -14,12 +14,12 @@ public class AboutWindow {
     JFrame mainFrame;
     JPanel buttonPanel, choosePanel;
     JButton  closeButton;
-    JTextArea name,version,year;
-    ExpenseManager umlGraph;
+    JTextArea name,version,year, autores;
+    ExpenseManager expenseManager;
 
 
     public AboutWindow(ExpenseManager umlGraph) {
-        this.umlGraph = umlGraph;
+        this.expenseManager = umlGraph;
 
         buildFrame();
         mainFrame.setLocationRelativeTo(null);
@@ -35,7 +35,7 @@ public class AboutWindow {
         mainFrame.setPreferredSize(new Dimension(500,200));
 
         mainFrame.pack();
-        mainFrame.show(true);
+        mainFrame.setVisible(true);
 
     }
 
@@ -65,12 +65,20 @@ public class AboutWindow {
         name = new JTextArea("Nombre: \t ExpenseWithFriends");
         version = new JTextArea("Version: \t 1.0");
         year = new JTextArea("year: \t 2017");
+        autores = new JTextArea("Ornella Belloni & Juan Maria Marsicovetere");
+        name.setEditable(false);
+        version.setEditable(false);
+        year.setEditable(false);
+        autores.setEditable(false);
+        
 
 //        classSelect.setPreferredSize(new Dimension(150,20));
 
         choosePanel.add(name);
         choosePanel.add(version);
         choosePanel.add(year);
+        choosePanel.add(autores);
+
 
 
         return choosePanel;

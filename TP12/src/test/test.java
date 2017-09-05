@@ -1,4 +1,4 @@
-	package test;
+package test;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,89 +19,29 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import main.GUI.mainWindow.Window.MainFrame;
-import main.model.Friend;
 
 public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+			MainFrame mainFrame = new MainFrame();
 		
-		ArrayList<String> arrayList = new ArrayList<>();
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("b");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("e");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("w");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-		arrayList.add("a");
-
-		Set<String> set = new HashSet<String>(arrayList);
-		System.out.println(set);
+		/*ArrayList<String> algo = new ArrayList<String>();
+		algo.add("algo");
+		algo.add("as");
+		algo.add("asd");
+		algo.add("as");
+		algo.add("as");
+		algo.add("algo");
+		algo.add("as");
+		algo.add("asd");
+		algo.add("as");
+		algo.add("as");
 		
+		LinkedList< String> linkedList = new LinkedList<>();
+		linkedList.addAll(algo);
 		
-		
-//			MainFrame mainFrame = new MainFrame();
-//			
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("algo", 12, Calendar.getInstance(), 2);
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("sdasf", 12, Calendar.getInstance(), 2);
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("fasd", 12, Calendar.getInstance(), 2);
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("trte", 12, Calendar.getInstance(), 2);
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("ytry", 12, Calendar.getInstance(), 2);
-//			
-////			
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("carlos", "adsa");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("dfad", "ppo");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("gadfd", "netr");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("hrt", "jyt");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("ngdf", "verw");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("wtre", "rwe");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("er", "se");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("qe", "fd");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("tw", "re");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("w", "gfd");
-////			mainFrame.getExpenseManager().getOwnwerController().getOwner().addFriend("ywre", "fd");
-////			
-//			ArrayList<Friend> f = new ArrayList<>(mainFrame.getExpenseManager().getOwnwerController().getOwner().searchAllFriend("a"));
-//			
-//			mainFrame.getExpenseManager().getOwnwerController().getOwner().addExpense("ytry", 12, Calendar.getInstance(), f,2);
-//
-//
-//			mainFrame.repaint();
-			
-//		ArrayList<String> algo = new ArrayList<String>();
-//		algo.add("algo");
-//		algo.add("as");
-//		algo.add("asd");
-//		algo.add("as");
-//		algo.add("as");
-//		algo.add("algo");
-//		algo.add("as");
-//		algo.add("asd");
-//		algo.add("as");
-//		algo.add("as");
-//		
-//		LinkedList< String> linkedList = new LinkedList<>();
-//		linkedList.addAll(algo);
-//		
-//		ArrayList<String> a = new ArrayList<>();
-//		for (String string : linkedList) {
-//			if (string.contains("s")) {
-//				a.add(string);
-//			}
-//		}
-//		
-//			System.out.println(a);
+			System.out.println(linkedList);
 			
 	
 		
@@ -134,7 +74,7 @@ public class test {
 //		jFrame.add(jPanelEast, BorderLayout.EAST);
 //		jFrame.add(jPanelWest, BorderLayout.WEST);
 //		jFrame.setVisible(true);
-		
+	*/	
 	}
 
 }

@@ -8,7 +8,7 @@ public class Friend {
 	private double adeuda;
 	private static int counter = 0;
 	private int id;
-	private boolean hasChange = false;
+	private static boolean hasChange = false;
 
 	
 	public Friend(String mail, long celNumber, String name, String lastName, double adeuda) {
@@ -28,6 +28,7 @@ public class Friend {
 		// TODO Auto-generated constructor stub
 		id=counter;
 		counter ++;
+		hasChange = true;
 	}
 	public AppRequest getAppRequest() {
 		return appRequest;
@@ -65,10 +66,12 @@ public class Friend {
 	public double getAdeuda() {
 		return adeuda;
 	}
-	public void setHasChange(boolean hasChange) {
-		this.hasChange = hasChange;
+	public static void resetHasChange() {
+		hasChange = false;
 	}
-	
+	public static boolean isHasChange() {
+		return hasChange;
+	}
 	public int getId() {
 		return id;
 	}
@@ -83,7 +86,7 @@ public class Friend {
 					 + "\n";
 		} catch (NullPointerException e) {
 			// TODO: handle exception
-			return  id +";" +name + ";" + lastName+";"+ adeuda  + " ;" + " ;"+ " ;"  + "\n";
+			return  id +";" +name + ";" + lastName+";"+ adeuda  + ";" + ";"+ ";"  + "\n";
 
 		}
 		

@@ -89,8 +89,22 @@ public class Income extends AbstractExpense {
 
 	public boolean Search(String lugar, String precio) {
 		// TODO Auto-generated method stub
-		boolean l = Search(lugar);
-		boolean p = Search(precio);
+		
+		boolean l = place.contains(lugar);
+		boolean p = false;
+			String totalValue = "" + getTotalValue();
+			if (totalValue.contains(precio)) {
+				p= true;
+			}
+		
+			if (lugar.equals("") && !precio.equals("")) {
+				l=p;
+			}
+			if (!lugar.equals("") && precio.equals("")) {
+				p=l;
+			}
+		
+		
 		return l || p;
 	}
 
