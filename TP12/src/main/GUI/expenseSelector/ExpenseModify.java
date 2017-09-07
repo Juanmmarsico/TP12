@@ -24,7 +24,6 @@ import java.util.Set;
 
 import javax.swing.*;
 
-import com.sun.prism.j2d.print.J2DPrinter;
 
 import main.control.ExpenseManager;
 import main.model.AbstractExpense;

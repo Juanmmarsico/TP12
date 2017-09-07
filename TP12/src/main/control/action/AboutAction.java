@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import main.GUI.aboutWindow.AboutWindow;
 import main.control.ExpenseManager;
 
+// hola
 public class AboutAction extends ExpenseManagerAction {
 
 	public AboutAction(ExpenseManager expenseManager) {

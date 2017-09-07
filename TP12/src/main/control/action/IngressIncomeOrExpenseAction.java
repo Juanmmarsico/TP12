@@ -64,7 +64,7 @@ public void itemStateChanged(ItemEvent e) {
 			if(ex.getExpense().isSelected()){
 			expenseManager.getOwnwerController().getOwner().addExpense(ex.getPlaceField().getText(),Double.parseDouble(ex.getAmountField().getText()), ex.getComboSubCat().getSelectedItem(), ex.getFriendsCopy(), ";");
 			}else{
-			expenseManager.getOwnwerController().getOwner().addIncome(repetition, repetitionsDays, ex.getPlaceField().getText(), Double.parseDouble(ex.getAmountField().getText()), ex.getComboSubCat().getSelectedItem());
+//			expenseManager.getOwnwerController().getOwner().addIncome(repetition, repetitionsDays, ex.getPlaceField().getText(), Double.parseDouble(ex.getAmountField().getText()), ex.getComboSubCat().getSelectedItem());
 			}
 		}else{
 			if (e.getSource()==ex.getCancelar()){

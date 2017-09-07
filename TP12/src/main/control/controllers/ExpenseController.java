@@ -16,8 +16,6 @@ import main.model.AbstractExpense;
 import main.model.Expense;
 import main.model.Friend;
 import main.model.Income;
-import sun.net.www.content.text.plain;
-
 public class ExpenseController {
 	
 	ArrayList<AbstractExpense> expenses;

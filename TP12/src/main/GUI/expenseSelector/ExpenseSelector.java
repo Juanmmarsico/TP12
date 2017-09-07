@@ -16,8 +16,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import javafx.scene.control.ScrollBar;
-import javafx.scene.layout.Border;
+
 import main.control.ExpenseManager;
 import main.control.controllers.ExcepcionPropia;
 import main.model.AbstractExpense;
