@@ -24,7 +24,6 @@ public class ModifyAction extends ExpenseManagerAction {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() instanceof JButton) {

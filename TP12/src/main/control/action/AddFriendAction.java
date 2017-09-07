@@ -24,8 +24,8 @@ public class AddFriendAction extends ExpenseManagerAction{
 		// TODO Auto-generated constructor stub
         fileChooser = new OpenFileChooser(NAME, new TXTExtensionFilter(), JFileChooser.OPEN_DIALOG);
 	}
-
-	@Override
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String string ="Seleccione el archivo con los amigos,\n PD la informacion puede llegar a duplicarse si el amigo ya existia previamente \n"
