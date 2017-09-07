@@ -8,7 +8,7 @@ import javax.swing.JMenuItem;
 
 import main.GUI.search.ConsultaMasiva;
 import main.control.ExpenseManager;
-
+//algo
 public class SearchAction extends ExpenseManagerAction {
 
 	public SearchAction(ExpenseManager expenseManager) {
